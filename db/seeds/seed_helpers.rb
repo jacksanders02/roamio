@@ -28,6 +28,10 @@ end
 # @param featured_location [FeaturedLocation] the location for which to seed an image
 # @param location_name [String] the name of the location, which should match up to an image
 def seed_location_image(featured_location, location_name)
+  if featured_location.nil?
+    return
+  end
+
   filename = "#{location_name.parameterize.underscore}.webp"
 
   featured_location.image.attach(
@@ -43,6 +47,10 @@ end
 # @param trip [Trip] the trip for which to seed an image
 # @param filename [String] the filename of the avatar, within db/seeds/images/trips
 def seed_trip_image(trip, filename)
+  if trip.nil?
+    return
+  end
+
   trip.image.attach(
     io: seed_image_file("trips", filename),
     filename: filename,
@@ -56,6 +64,10 @@ end
 # @param app_feature [AppFeature] the app feature for which to seed an image
 # @param filename [String] the filename of the image, within db/seeds/images/trips
 def seed_app_feature_image(app_feature, filename)
+  if app_feature.nil?
+    return
+  end
+
   app_feature.image.attach(
     io: seed_image_file("app_features", filename),
     filename: filename,

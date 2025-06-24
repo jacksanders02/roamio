@@ -7,7 +7,7 @@ australia = Trip.find_by(title: "Australian Adventure")
 europe = Trip.find_by(title: "Summer Interrailing")
 
 ### BRIENZ
-Plan.find_or_create_by!(
+brienz_hike = Plan.new(
   trip_id: brienz.id,
   title: "Hardergrat Hike",
   plan_type: Plan.plan_types[:active],
@@ -17,9 +17,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-19 06:00:00"),
   end_date: Time.zone.parse("2025-06-19 17:00:00"),
   created_at: Time.zone.parse("2025-04-23 17:52:00"),
-)
+) unless Plan.find_by(trip_id: brienz.id, title: "Hardergrat Hike").present?
+brienz_hike&.save!(validate: false)
 
-Plan.find_or_create_by!(
+brienzer_rothorn_hike = Plan.new(
   trip_id: brienz.id,
   title: "Brienzer Rothorn Hike",
   plan_type: Plan.plan_types[:active],
@@ -29,9 +30,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-20 11:45:00"),
   end_date: Time.zone.parse("2025-06-20 17:45:00"),
   created_at: Time.zone.parse("2025-04-23 17:55:00"),
-)
+) unless Plan.find_by(trip_id: brienz.id, title: "Brienzer Rothorn Hike").present?
+brienzer_rothorn_hike&.save!(validate: false)
 
-Plan.find_or_create_by!(
+train_to_brienzer_rothorn = Plan.new(
   trip_id: brienz.id,
   title: "Train to Brienzer Rothorn",
   plan_type: Plan.plan_types[:travel_by_train],
@@ -44,10 +46,11 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-20 11:00:00"),
   end_date: Time.zone.parse("2025-06-20 11:30:00"),
   created_at: Time.zone.parse("2025-04-23 17:54:00"),
-)
+) unless Plan.find_by(trip_id: brienz.id, title: "Train to Brienzer Rothorn").present?
+train_to_brienzer_rothorn&.save!(validate: false)
 
 ### BRIGHTON
-Plan.find_or_create_by!(
+train_to_brighton = Plan.new(
   trip_id: brighton.id,
   title: "Train to Brighton",
   plan_type: Plan.plan_types[:travel_by_train],
@@ -60,9 +63,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-21 10:00:00"),
   end_date: Time.zone.parse("2025-06-21 10:40:00"),
   created_at: Time.zone.parse("2025-03-29 17:17:00"),
-)
+) unless Plan.find_by(trip_id: brighton.id, title: "Train to Brighton").present?
+train_to_brighton&.save!(validate: false)
 
-Plan.find_or_create_by!(
+yoga_on_beach = Plan.new(
   trip_id: brighton.id,
   title: "Yoga on the beach",
   plan_type: Plan.plan_types[:wellness],
@@ -72,9 +76,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-21 16:00:00"),
   end_date: Time.zone.parse("2025-06-21 18:00:00"),
   created_at: Time.zone.parse("2025-03-30 17:17:00"),
-)
+) unless Plan.find_by(trip_id: brighton.id, title: "Yoga on the beach").present?
+yoga_on_beach&.save!(validate: false)
 
-Plan.find_or_create_by!(
+train_to_three_bridges = Plan.new(
   trip_id: brighton.id,
   title: "Train to Three Bridges",
   plan_type: Plan.plan_types[:travel_by_train],
@@ -87,10 +92,11 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-22 17:00:00"),
   end_date: Time.zone.parse("2025-06-22 17:40:00"),
   created_at: Time.zone.parse("2025-03-29 17:20:00"),
-)
+) unless Plan.find_by(trip_id: brighton.id, title: "Train to Three Bridges").present?
+train_to_three_bridges&.save!(validate: false)
 
 ### SHEFFIELD
-Plan.find_or_create_by!(
+graduation_ceremony = Plan.new(
   trip_id: sheffield.id,
   title: "Graduation Ceremony",
   plan_type: Plan.plan_types[:entertainment],
@@ -100,9 +106,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-07-25 12:00:00"),
   end_date: Time.zone.parse("2025-07-25 14:00:00"),
   created_at: Time.zone.parse("2025-04-29 12:54:00"),
-)
+) unless Plan.find_by(trip_id: sheffield.id, title: "Graduation Ceremony").present?
+graduation_ceremony&.save!(validate: false)
 
-Plan.find_or_create_by!(
+chill_out = Plan.new(
   trip_id: sheffield.id,
   title: "Chill Out",
   plan_type: Plan.plan_types[:free_time],
@@ -110,9 +117,10 @@ Plan.find_or_create_by!(
   end_date: Time.zone.parse("2025-07-25 18:00:00"),
   created_at: Time.zone.parse("2025-04-29 13:00:00"),
   updated_at: Time.zone.parse("2025-04-29 13:00:00"),
-)
+) unless Plan.find_by(trip_id: sheffield.id, title: "Chill Out").present?
+chill_out&.save!(validate: false)
 
-backup = Plan.find_or_create_by!(
+poptarts = Plan.new(
   trip_id: sheffield.id,
   title: "Poptarts",
   plan_type: Plan.plan_types[:entertainment],
@@ -123,9 +131,10 @@ backup = Plan.find_or_create_by!(
   end_date: Time.zone.parse("2025-07-26 03:00:00"),
   created_at: Time.zone.parse("2025-04-29 13:33:00"),
   updated_at: Time.zone.parse("2025-04-29 13:33:00"),
-)
+) unless Plan.find_by(trip_id: sheffield.id, title: "Poptarts").present?
+poptarts&.save!(validate: false)
 
-Plan.find_or_create_by!(
+post_graduation_shenanigans = Plan.new(
   trip_id: sheffield.id,
   title: "Post-Graduation Shenanigans",
   plan_type: Plan.plan_types[:wellness],
@@ -135,11 +144,12 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-07-26 00:00:00"),
   end_date: Time.zone.parse("2025-07-26 03:00:00"),
   created_at: Time.zone.parse("2025-04-29 13:03:00"),
-  backup_plan_id: backup.id,
-)
+  backup_plan_id: poptarts.id,
+) unless Plan.find_by(trip_id: sheffield.id, title: "Post-Graduation Shenanigans").present?
+post_graduation_shenanigans&.save!(validate: false)
 
 ### AUSTRALIA
-Plan.find_or_create_by!(
+flight_lhr_syd = Plan.new(
   trip_id: australia.id,
   title: "Flight LHR -> SYD",
   plan_type: Plan.plan_types[:travel_by_plane],
@@ -152,9 +162,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-12-01 08:45:00"),
   end_date: Time.zone.parse("2025-12-02 18:50:00"),
   created_at: Time.zone.parse("2025-04-22 13:03:00"),
-)
+) unless Plan.find_by(trip_id: australia.id, title: "Flight LHR -> SYD").present?
+flight_lhr_syd&.save!(validate: false)
 
-Plan.find_or_create_by!(
+opera_sydney = Plan.new(
   trip_id: australia.id,
   title: "Opera at the Sydney Opera House",
   plan_type: Plan.plan_types[:entertainment],
@@ -164,9 +175,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-12-14 18:20:00"),
   end_date: Time.zone.parse("2025-12-14 21:00:00"),
   created_at: Time.zone.parse("2025-04-22 13:05:00"),
-)
+) unless Plan.find_by(trip_id: australia.id, title: "Opera at the Sydney Opera House").present?
+opera_sydney&.save!(validate: false)
 
-Plan.find_or_create_by!(
+uluru_visit = Plan.new(
   trip_id: australia.id,
   title: "Check out this cool rock I found",
   plan_type: Plan.plan_types[:sightseeing],
@@ -176,9 +188,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-12-07 11:20:00"),
   end_date: Time.zone.parse("2025-12-14 16:00:00"),
   created_at: Time.zone.parse("2025-04-22 13:05:00"),
-)
+) unless Plan.find_by(trip_id: australia.id, title: "Check out this cool rock I found").present?
+uluru_visit&.save!(validate: false)
 
-Plan.find_or_create_by!(
+flight_syd_lhr = Plan.new(
   trip_id: australia.id,
   title: "Flight SYD -> LHR",
   plan_type: Plan.plan_types[:travel_by_plane],
@@ -191,10 +204,11 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2025-12-21 20:20:00"),
   end_date: Time.zone.parse("2025-12-22 11:30:00"),
   created_at: Time.zone.parse("2025-04-22 13:05:00"),
-)
+) unless Plan.find_by(trip_id: australia.id, title: "Flight SYD -> LHR").present?
+flight_syd_lhr&.save!(validate: false)
 
 ### EUROPE
-Plan.find_or_create_by!(
+train_london_brussels = Plan.new(
   trip_id: europe.id,
   title: "Train St. Pancras -> Brussels",
   plan_type: Plan.plan_types[:travel_by_train],
@@ -207,9 +221,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2026-08-01 09:54:00"),
   end_date: Time.zone.parse("2026-08-01 14:30:00"),
   created_at: Time.zone.parse("2025-04-15 19:05:00"),
-)
+) unless Plan.find_by(trip_id: europe.id, title: "Train St. Pancras -> Brussels").present?
+train_london_brussels&.save!(validate: false)
 
-Plan.find_or_create_by!(
+train_brussels_cologne = Plan.new(
   trip_id: europe.id,
   title: "Train Brussels -> Köln Hbf.",
   plan_type: Plan.plan_types[:travel_by_train],
@@ -222,9 +237,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2026-08-01 15:00:00"),
   end_date: Time.zone.parse("2026-08-01 17:30:00"),
   created_at: Time.zone.parse("2025-04-15 19:05:00"),
-)
+) unless Plan.find_by(trip_id: europe.id, title: "Train Brussels -> Köln Hbf.").present?
+train_brussels_cologne&.save!(validate: false)
 
-Plan.find_or_create_by!(
+cologne_cathedral = Plan.new(
   trip_id: europe.id,
   title: "Look at the cathedral",
   plan_type: Plan.plan_types[:sightseeing],
@@ -234,9 +250,10 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2026-08-02 11:15:00"),
   end_date: Time.zone.parse("2026-08-02 12:30:00"),
   created_at: Time.zone.parse("2025-04-15 18:05:00"),
-)
+) unless Plan.find_by(trip_id: europe.id, title: "Look at the cathedral")
+cologne_cathedral&.save!(validate: false)
 
-Plan.find_or_create_by!(
+train_vienna_stuttgart = Plan.new(
   trip_id: europe.id,
   title: "Train Vienna -> Stuttgart",
   plan_type: Plan.plan_types[:travel_by_train],
@@ -249,28 +266,30 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2026-08-15 09:15:00"),
   end_date: Time.zone.parse("2026-08-15 12:30:00"),
   created_at: Time.zone.parse("2025-04-17 13:05:00"),
-)
+) unless Plan.find_by(trip_id: europe.id, title: "Train Vienna -> Stuttgart").present?
+train_vienna_stuttgart&.save!(validate: false)
 
-Plan.find_or_create_by!(
+train_stuttgart_paris = Plan.new(
   trip_id: europe.id,
   title: "Train Stuttgart -> Paris",
   plan_type: Plan.plan_types[:travel_by_train],
   start_location_name: "Stuttgart Main Station, Stuttgart, Germany",
   start_location_latitude: 48.7842663,
   start_location_longitude: 9.1821173,
-  end_location_name: "Paris Gare de l’Est, Paris, France",
+  end_location_name: "Paris Gare de l'Est, Paris, France",
   end_location_latitude: 48.8770979,
   end_location_longitude: 2.3594905,
   start_date: Time.zone.parse("2026-08-15 13:00:00"),
   end_date: Time.zone.parse("2026-08-15 17:30:00"),
   created_at: Time.zone.parse("2025-04-17 13:05:00"),
-)
+) unless Plan.find_by(trip_id: europe.id, title: "Train Stuttgart -> Paris").present?
+train_stuttgart_paris&.save!(validate: false)
 
-Plan.find_or_create_by!(
+train_paris_london = Plan.new(
   trip_id: europe.id,
   title: "Train Paris -> London",
   plan_type: Plan.plan_types[:travel_by_train],
-  start_location_name: "Paris Gare de l’Est, Paris, France",
+  start_location_name: "Paris Gare de l'Est, Paris, France",
   start_location_latitude: 48.8770979,
   start_location_longitude: 2.3594905,
   end_location_name: "St Pancras International Station, London, United Kingdom",
@@ -279,4 +298,5 @@ Plan.find_or_create_by!(
   start_date: Time.zone.parse("2026-08-15 19:00:00"),
   end_date: Time.zone.parse("2026-08-15 22:30:00"),
   created_at: Time.zone.parse("2025-04-17 16:05:00"),
-)
+) unless Plan.find_by(trip_id: europe.id, title: "Train Paris -> London").present?
+train_paris_london&.save!(validate: false)
