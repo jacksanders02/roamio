@@ -31,13 +31,13 @@ services:
     security_opt:
       - seccomp=chrome.json
     networks:
-      - proxiable
+      - nginx
     restart: always
 
 volumes:
   postgres_data:
   postgres_socket:
 networks:
-  proxiable:
-    name: proxiable
+  nginx:
+    name: nginx
     external: true
