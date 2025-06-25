@@ -51,7 +51,7 @@ RSpec.feature("Managing plans") do
       select_location("England")
       select_separated_date_range(start_date_for_js, end_date_for_js)
       click_on "Save"
-      expect(page).to(have_content("Title is too long (maximum is 250 characters)"))
+      expect(page).to(have_content("Title is too long (maximum is 2500 characters)"))
     end
 
     scenario "I cannot create a plan with no provided plan type", js: true do
