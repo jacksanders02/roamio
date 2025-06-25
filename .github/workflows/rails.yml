@@ -32,7 +32,12 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
+          bundler-cache: true 
+      - name: Install libvips
+        run: |
+          sudo apt-get update
+          # we only need the library
+          sudo apt-get install --no-install-recommends libvips
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
@@ -45,10 +50,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
+          bundler-cache: true 
+      - name: Install libvips
+        run: |
+          sudo apt-get update
+          # we only need the library
+          sudo apt-get install --no-install-recommends libvips
       - name: Generate binstubs
         run: bundle binstubs bundler-audit brakeman rubocop
       # Add or replace any other lints here
