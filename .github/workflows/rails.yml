@@ -43,7 +43,7 @@ jobs:
         run: bin/bundle exec rails db:schema:load
       # Manually compile test assets
       - name: Run tests
-        run: bin/bundle exec rake spec
+        run: RAILS_ENV=test bin/bundle exec rake webpacker:compile && bin/bundle exec rake spec
 
   lint:
     runs-on: ubuntu-latest
