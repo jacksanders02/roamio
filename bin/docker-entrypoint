@@ -6,7 +6,6 @@ if [ -z "${LD_PRELOAD+x}" ]; then
     export LD_PRELOAD
 fi
 
-./bin/rails db:prepare db:seed
-npx puppeteer browsers install chrome
+./bin/rails assets:precompile
 
 exec "${@}"

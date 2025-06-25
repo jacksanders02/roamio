@@ -82,7 +82,6 @@ COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails --tasks
 RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
 
 # Final stage for app image
