@@ -33,6 +33,13 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true 
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 24.2.0
+      - uses: borales/actions-yarn@v1
+        with:
+          cmd: install # Run `yarn install`
       - name: Install libvips
         run: |
           sudo apt-get update
