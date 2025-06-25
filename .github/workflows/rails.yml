@@ -40,10 +40,10 @@ jobs:
           sudo apt-get install --no-install-recommends libvips
       # Add or replace database setup steps here
       - name: Set up database schema
-        run: bin/rails db:schema:load
-      # Add or replace test runners here
+        run: bin/bundle exec rails db:schema:load
+      # Manually compile test assets
       - name: Run tests
-        run: bin/rake spec
+        run: bin/bundle exec rake spec
 
   lint:
     runs-on: ubuntu-latest
