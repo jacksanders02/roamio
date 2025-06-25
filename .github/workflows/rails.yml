@@ -34,10 +34,10 @@ jobs:
         with:
           bundler-cache: true 
       - name: Set up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 24.2.0
-      - uses: borales/actions-yarn@v1
+      - uses: borales/actions-yarn@v4
         with:
           cmd: install # Run `yarn install`
       - name: Install libvips
