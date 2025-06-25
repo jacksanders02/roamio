@@ -51,11 +51,14 @@ def seed_trip_image(trip, filename)
     return
   end
 
-  trip.image.attach(
+  trip.image = {
     io: seed_image_file("trips", filename),
     filename: filename,
     content_type: "image/jpeg",
-  )
+  }
+
+  # Skip validation on save when seeding trips, as some will have start dates in the past
+  trip.save(validate: false)
 end
 
 ##
