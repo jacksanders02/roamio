@@ -26,6 +26,8 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
+      - uses: actions/checkout@v4
+
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
@@ -39,7 +41,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code & install dependencies
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
         uses: ./.github/actions/install-deps
 
       - name: Generate binstubs
