@@ -59,6 +59,7 @@ jobs:
         run: bin/rubocop --parallel
 
       - name: Run ESLint
+        working-directory: .
         run: bin/yarn lint
 
       - name: Run HAML-lint
