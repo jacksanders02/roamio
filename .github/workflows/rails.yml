@@ -60,7 +60,7 @@ jobs:
 
       - name: Run ESLint
         working-directory: .
-        run: bin/yarn lint
+        run: bin/yarn run eslint -c /home/runner/work/roamio/roamio/ .
 
       - name: Run HAML-lint
         run: bin/bundle exec haml-lint
