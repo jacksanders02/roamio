@@ -2,6 +2,9 @@
   "name": "app",
   "private": true,
   "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "lint": "eslint ."
+  },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.18.1",
     "@algolia/autocomplete-theme-classic": "^1.18.1",

@@ -59,7 +59,7 @@ jobs:
         run: bin/rubocop --parallel
 
       - name: Run ESLint
-        run: bin/yarn run eslint -c .eslintrc.json .
+        run: bin/yarn lint
 
       - name: Run HAML-lint
         run: bin/bundle exec haml-lint
