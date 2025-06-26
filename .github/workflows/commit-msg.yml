@@ -1,0 +1,39 @@
+# This workflow will check that commit messages follow the conventional commits standard
+name: "commit-msg"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize']
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install commitlint
+        run: npm install -D @commitlint/cli @commitlint/config-conventional
+
+      - name: Validate current commit (last commit) with commitlint
+        if: github.event_name == 'push'
+        run: npx commitlint --last --verbose
+
+      - name: Validate PR title with commitlint
+        if: github.event_name == 'pull_request'
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: echo $TITLE | npx commitlint
+

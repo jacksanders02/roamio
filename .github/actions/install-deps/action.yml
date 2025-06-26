@@ -1,0 +1,27 @@
+name: 'Install dependencies'
+description: 'Install ruby gems + node modules needed by other actions'
+runs:
+  using: "composite"
+  steps:
+    - name: Install Ruby and gems
+      uses: ruby/setup-ruby@a4effe49ee8ee5b8b5091268c473a4628afb5651 # v1.245.0
+      with:
+        bundler-cache: true
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 24.2.0
+        cache: 'yarn'
+
+    - name: Install yarn dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
+
+    - name: Install libvips
+      shell: bash
+      run: |
+        sudo apt-get update
+        # we only need the library
+        sudo apt-get install --no-install-recommends libvips
+
