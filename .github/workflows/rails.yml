@@ -64,7 +64,7 @@ jobs:
           echo "Contents of .eslintrc.json:"
           cat .eslintrc.json || echo "No .eslintrc.json found"
           echo "ESLint config being used:"
-          npx eslint --print-config . || echo "Failed to print config"
+          npx eslint --print-config app/paclks/scripts/admin_answer_question.js || echo "Failed to print config"
           echo "Installed packages:"
           yarn list --pattern eslint
 
