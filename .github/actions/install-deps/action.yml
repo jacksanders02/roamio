@@ -18,6 +18,7 @@ runs:
         cmd: install # Run `yarn install`
 
     - name: Install libvips
+      shell: bash
       run: |
         sudo apt-get update
         # we only need the library
