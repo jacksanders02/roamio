@@ -2,7 +2,7 @@
 
 require_relative "seed_helpers"
 
-brienz_trip = Trip.find_or_create_by!(
+brienz_trip = Trip.new(
   title: "Switzerland Summer '25",
   description: "Hiking and stuff",
   location_name: "Brienz, Switzerland",
@@ -11,11 +11,12 @@ brienz_trip = Trip.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-17 00:00:00"),
   end_date: Time.zone.parse("2025-06-22 23:59:59"),
   created_at: Time.zone.parse("2025-04-21 17:34:00"),
-)
+) unless Trip.find_by(title: "Switzerland Summer '25")
+brienz_trip&.save!(validate: false)
 
 seed_trip_image(brienz_trip, "brienz.jpg")
 
-beach_weekend = Trip.find_or_create_by!(
+beach_weekend = Trip.new(
   title: "Beach Weekend Getaway",
   description: "Quick weekend escape to the coast",
   location_name: "Brighton, United Kingdom",
@@ -24,11 +25,12 @@ beach_weekend = Trip.find_or_create_by!(
   start_date: Time.zone.parse("2025-06-21 00:00:00"),
   end_date: Time.zone.parse("2025-06-22 23:59:59"),
   created_at: Time.zone.parse("2025-03-28 20:17:00"),
-)
+) unless Trip.find_by(title: "Beach Weekend Getaway")
+beach_weekend&.save!(validate: false)
 
 seed_trip_image(beach_weekend, "brighton.jpg")
 
-graduation = Trip.find_or_create_by!(
+graduation = Trip.new(
   title: "Graduation!",
   description: "Uni? Completed it mate",
   location_name: "Sheffield, United Kingdom",
@@ -37,11 +39,12 @@ graduation = Trip.find_or_create_by!(
   start_date: Time.zone.parse("2025-07-24 00:00:00"),
   end_date: Time.zone.parse("2025-07-26 23:59:59"),
   created_at: Time.zone.parse("2025-04-27 12:23:00"),
-)
+) unless Trip.find_by(title: "Graduation!")
+graduation&.save!(validate: false)
 
 seed_trip_image(graduation, "sheffield.jpg")
 
-australia = Trip.find_or_create_by!(
+australia = Trip.new(
   title: "Australian Adventure",
   description: "Getting away from the winter",
   location_name: "Australia",
@@ -50,11 +53,12 @@ australia = Trip.find_or_create_by!(
   start_date: Time.zone.parse("2025-12-01 00:00:00"),
   end_date: Time.zone.parse("2025-12-22 23:59:59"),
   created_at: Time.zone.parse("2025-03-22 11:05:00"),
-)
+) unless Trip.find_by(title: "Australian Adventure")
+australia&.save!(validate: false)
 
 seed_trip_image(australia, "australia.jpg")
 
-interrailing = Trip.find_or_create_by!(
+interrailing = Trip.new(
   title: "Summer Interrailing",
   description: "Interrailing through Germany, Austria, and Czechia.",
   location_name: "Europe",
@@ -63,6 +67,7 @@ interrailing = Trip.find_or_create_by!(
   start_date: Time.zone.parse("2026-08-01 00:00:00"),
   end_date: Time.zone.parse("2026-08-15 23:59:59"),
   created_at: Time.zone.parse("2025-04-15 18:30:00"),
-)
+) unless Trip.find_by(title: "Summer Interrailing")
+interrailing&.save!(validate: false)
 
 seed_trip_image(interrailing, "europe.jpg")
