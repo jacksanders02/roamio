@@ -3,7 +3,7 @@
   "private": true,
   "packageManager": "yarn@1.22.22",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint --max-warnings 0 ."
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.18.1",
