@@ -35,5 +35,5 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           TITLE: ${{ github.event.pull_request.title }}
-        run: npx commitlint $TITLE
+        run: echo $TITLE | npx commitlint
 
