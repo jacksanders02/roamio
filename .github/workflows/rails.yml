@@ -58,15 +58,26 @@ jobs:
       - name: Lint Ruby files
         run: bin/rubocop --parallel
 
-      - name: Debug ESLint setup
+      - name: Comprehensive ESLint Debug
         run: |
-          echo "Current directory: $(pwd)"
-          echo "Contents of .eslintrc.json:"
-          cat .eslintrc.json || echo "No .eslintrc.json found"
-          echo "ESLint config being used:"
-          npx eslint --print-config app/paclks/scripts/admin_answer_question.js || echo "Failed to print config"
-          echo "Installed packages:"
-          yarn list --pattern eslint
+          echo "=== Current working directory ==="
+          pwd
+          echo "=== Directory contents ==="
+          ls -la
+          echo "=== Looking for .eslintrc files ==="
+          find . -name ".eslintrc*" -type f
+          echo "=== Contents of root .eslintrc.json ==="
+          cat ./.eslintrc.json || echo "No .eslintrc.json in root"
+          echo "=== ESLint version ==="
+          npx eslint --version
+          echo "=== Node modules eslint location ==="
+          ls -la node_modules/.bin/eslint || echo "No eslint in node_modules/.bin"
+          echo "=== Which eslint binary ==="
+          which eslint || echo "No eslint in PATH"
+          echo "=== Trying to print config from root ==="
+          npx eslint --print-config ./app/packs/scripts/admin_answer_question.js
+          echo "=== Yarn bin directory ==="
+          yarn bin eslint || echo "No yarn bin eslint"
 
       - name: Run ESLint
         working-directory: .
