@@ -58,9 +58,19 @@ jobs:
       - name: Lint Ruby files
         run: bin/rubocop --parallel
 
+      - name: Debug ESLint setup
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Contents of .eslintrc.json:"
+          cat .eslintrc.json || echo "No .eslintrc.json found"
+          echo "ESLint config being used:"
+          npx eslint --print-config . || echo "Failed to print config"
+          echo "Installed packages:"
+          yarn list --pattern eslint
+
       - name: Run ESLint
         working-directory: .
-        run: bin/yarn run eslint -c /home/runner/work/roamio/roamio/.eslintrc.json .
+        run: bin/yarn lint
 
       - name: Run HAML-lint
         run: bin/bundle exec haml-lint
