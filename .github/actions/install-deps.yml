@@ -1,0 +1,22 @@
+name: 'Install dependencies'
+description: 'Install ruby gems + node modules needed by other actions'
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+        uses: actions/checkout@v4
+
+    - name: Install Ruby and gems
+      uses: ruby/setup-ruby@a4effe49ee8ee5b8b5091268c473a4628afb5651 # v1.245.0
+      with:
+        bundler-cache: true
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 24.2.0
+
+    - uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
+      with:
+        cmd: install # Run `yarn install`
+
