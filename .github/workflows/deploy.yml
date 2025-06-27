@@ -1,10 +1,9 @@
-# This workflow will install a prebuilt Ruby version, install dependencies, and
-# run tests and linters.
+name: deploy
 on:
   push:
     branches: "**"
 jobs:
-  deploy:
+  production:
     runs-on: ubuntu-22.04
     steps:
       - name: Set up SSH key
