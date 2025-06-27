@@ -18,7 +18,7 @@ services:
     command: "./bin/rails server -p 3000 -b '0.0.0.0'"
     volumes:
       - postgres_socket:/var/run/postgresql
-      - ./storage:/rails/storage
+      - activestorage:/rails/storage
     expose:
       - "3000"
     ports:
@@ -37,6 +37,7 @@ services:
 volumes:
   postgres_data:
   postgres_socket:
+  activestorage:
 networks:
   nginx:
     name: nginx
