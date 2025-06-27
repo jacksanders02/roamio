@@ -104,11 +104,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.migadu.com",
     port: 587,
-    # domain: "roamiotravel.co.uk",
     user_name: ENV["SMTP_USERNAME"],
     password: ENV["SMTP_PASSWORD"],
     authentication: "plain",
-    enable_starttls: true,
     open_timeout: 5,
     read_timeout: 5,
   }
