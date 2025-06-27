@@ -21,6 +21,7 @@ WORKDIR /rails
 RUN apt-get update -qq \
     && apt-get install --no-install-recommends -y \
         curl \
+        chromium \
         libjemalloc2 \
         libvips \
         libpq-dev \
@@ -42,7 +43,9 @@ RUN apt-get update -qq \
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
 
 # Install node in base as it's needed at runtime for puppeteer
 ARG NODE_VERSION=20.17.0
