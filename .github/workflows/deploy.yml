@@ -12,4 +12,4 @@ jobs:
           echo "${{ secrets.PRODUCTION_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p 22 -t ed25519 ${{ secrets.PRODUCTION_HOST }} >> ~/.ssh/known_hosts
-      - run: ssh -t ${{ secrets.PRODUCTION_USERNAME }}@${{ secrets.PRODUCTION_HOST }} ${{ PRODUCTION_DEPLOY_SCRIPT }}
+      - run: ssh -t ${{ secrets.PRODUCTION_USERNAME }}@${{ secrets.PRODUCTION_HOST }} ${{ secrets.PRODUCTION_DEPLOY_SCRIPT }}
