@@ -50,12 +50,11 @@
                        tabindex: 0) do
             %i.bi.bi-input-cursor-text{ "aria-hidden": "true" } &nbsp;
             Change Your Nickname
-
-          = link_to(export_pdf_trip_path(@trip),
-                    class: "dropdown-item") do
+          = button_tag(type: "button",
+                       class: "dropdown-item",
+                       data: { controller: "export-pdf", url: export_pdf_trip_path(@trip) }) do
             %i.bi.bi-file-earmark-pdf &nbsp;
             Export PDF
-
           = link_to(trip_path(@trip),
                     class: "dropdown-item text-danger",
                     method: :delete,
