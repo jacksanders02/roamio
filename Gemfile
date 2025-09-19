@@ -4,7 +4,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", ">= 7.0.8", "< 7.1"
+gem "rails", "7.1.5.2"
 
 # Required to fix Logger bug in Ruby
 gem "concurrent-ruby", "1.3.4"
@@ -146,3 +146,8 @@ gem "pagy"
 
 # Blurhash (https://blurha.sh) implementation for ruby
 gem "blurhash"
+
+# Upgrades for security
+gem "nokogiri", "1.18.9"
+gem "rexml", "3.4.2"
+gem "thor", "1.4.0"
