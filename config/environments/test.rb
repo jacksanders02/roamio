@@ -12,7 +12,7 @@ require_relative "../../lib/middleware/test_ip_mock.rb"
 
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
+    Bullet.enable        = false
     Bullet.bullet_logger = true
     Bullet.raise         = true # raise an error if n+1 query occurs
 
@@ -49,7 +49,7 @@ Rails.application.configure do
   config.cache_store = :null_store
 
   # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = false
+  config.action_dispatch.show_exceptions = :none
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
