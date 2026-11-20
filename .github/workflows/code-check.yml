@@ -1,11 +1,38 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
-name: "codebase"
+name: "🧪 Lint & Test"
 on:
-  push:
-    branches: "**"
+  workflow_call:
 jobs:
+  lint:
+    name: 🔍 Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Generate binstubs
+        run: bundle binstubs bundler-audit brakeman rubocop
+
+      - name: Security audit dependencies
+        run: bin/bundler-audit --update
+
+      - name: Security audit application code
+        run: bin/brakeman -q -w2
+
+      - name: Lint Ruby files
+        run: bin/rubocop --parallel
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Run HAML-lint
+        run: bin/bundle exec haml-lint
+
   test:
+    name: 🧪 Test
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -31,29 +58,3 @@ jobs:
       # Manually compile test assets with rake precompile
       - name: Run tests
         run: RAILS_ENV=test bin/bundle exec rake assets:precompile && bin/bundle exec rake spec
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install dependencies
-        uses: ./.github/actions/install-deps
-
-      - name: Generate binstubs
-        run: bundle binstubs bundler-audit brakeman rubocop
-
-      - name: Security audit dependencies
-        run: bin/bundler-audit --update
-
-      - name: Security audit application code
-        run: bin/brakeman -q -w2
-
-      - name: Lint Ruby files
-        run: bin/rubocop --parallel
-
-      - name: Run ESLint
-        run: yarn lint
-
-      - name: Run HAML-lint
-        run: bin/bundle exec haml-lint
